@@ -1,0 +1,74 @@
+body {
+  font-family: "open sans", Verdana, arial, sans-serif;
+  max-width: 70rem;
+  margin: 0px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h3 {
+  font-size: 1.3rem;
+  padding: 0.4rem;
+  margin: 0px;
+  background-color: #003FD1; /*medium blue*/
+  color: #FFFFFF; /*white text*/
+  font-weight: normal;
+  vertical-align: top;
+}
+
+.tipCalculatorIcon {
+  height: 1.5em;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.card {
+  display: block;
+  height: auto;
+  width: 95%;
+  margin: 0.6rem;
+  padding: 0.1rem;
+  position: relative; /* had to do this so buttons could be positioned absolute to this div */
+}
+
+p {
+  font-size: 1.2rem;
+  margin: 0.5em;
+}
+
+#dollarSignSpan {
+  position: relative;
+  left:0.7em;
+}
+
+#billAmount {
+  text-align: center;
+}
+
+#tipPercent {
+  text-align: center;
+}
+
+#tipPercentAfter {
+  font-size:0.9em
+}
+
+.noWhiteSpaceWrap {
+  white-space: nowrap;
+  margin-right: 0.4rem;
+}
+
+input[type=number], input[type=text] {
+  margin-bottom: 0.4em;
+  font-size: 1em;
+  width:5.2em;
+  border: 1px solid;
+}
+
+input[type="button"] {
+  padding: 0.7rem;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  border: 0px solid;
+  border-radius: 2px;
+}
