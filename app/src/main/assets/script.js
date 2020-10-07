@@ -1,18 +1,6 @@
-/*  Flow:
-1. Bill Amount or Tip Percent fields change. This could be user input to either field or pressing a % button. % buttons call tipPercentButtonsWithRounding().
-2. Field change kicks off calculatePercentWithRounding().
-3. checkInputsDisplayErrorsReturn() checks if the fields are numbers, displays error messages, and returns True (are numbers, continue calculations) or False (are not numbers, stop calculations and display the original output placeholder).
-4. calculatePercentWithRounding() finishes the calculations and displays the outputs.
-
-Notes:
-1. Gratuitous comments in HTML, CSS, and JS don't matter because the production files are minified.
-2. Inlining the favicon and the H3 icon actually saves 0.2 KB transferred. gzip prevents the duplicate inlined images from being transferred twice. Unsure how that results in a smaller payload, but maybe there's overhead for grabbing the extra PNG file.
-*/
-
 // Add event listeners to the windows to run code when the page loads.
 window.addEventListener('load', displayOriginalOutput, false);
 window.addEventListener('load', giveBillAmountFocus, false);
-window.addEventListener('load', applyIosStyles, false);
 
 function giveBillAmountFocus(event) {
   document.getElementById('billAmount').focus();
@@ -142,24 +130,6 @@ function isAllowedKey(event) { // combining several answers from http://stackove
   } else { return false; }
 }*/
 
-// If the OS is iOS, move the dollar sign span to make it line up better, and make the text on the buttons slightly larger.
-function applyIosStyles() {
-  if (isOsIos()) {
-    document.getElementById('dollarSignSpan').style.left = '0.7em';
-    // ES6 way that uglify-js can't handle.
-    /* let r allButtons = document.querySelectorAll('input[type=button]');
-    for (currentButton of allButtons) {
-      currentButton.style.fontSize = '1rem';
-    }*/
-    // Older way that uglify-js can handle.
-    var allButtons = document.querySelectorAll('input[type=button]'); // create NodeList object of all input input[type=button].
-    allButtons = convertNodeListToArray(allButtons);
-    allButtons.forEach(function(currentButton, index) {
-      currentButton.style.fontSize = '1rem';
-    });
-  }
-}
-
 function convertNodeListToArray(nodeListToConvert) {
   return nodeListToConvert = Array.prototype.slice.call(nodeListToConvert); // convert NodeList to an Array for easier functional iterating - NodeList doesn't have forEach but arrays do. From https://developer.mozilla.org/en-US/docs/Web/API/NodeList
 }
@@ -213,7 +183,13 @@ function switchCss(event) {
 }
 
 function setThemeOnLoad() {
-  if (localStorage.getItem('theme') == 'light') colorCss.setAttribute('href', 'lightTheme.css');
-  else if (localStorage.getItem('theme') == 'dark') colorCss.setAttribute('href', 'darkTheme.css');
+  // If localStorage is supported, add a Theme button and load the theme. Otherwise leave the theme dark. On Android, WebView support for localStorage seems to begin at API 24 aka Android 7.
+  if (window.localStorage) {
+    document.getElementById('themeButtonSpan').innerHTML += '<input type="button" id="themeButton" value="Dark/light theme" onclick="switchCss(event) "></input>';
+    if (localStorage.getItem('theme') == 'light') colorCss.setAttribute('href', 'lightTheme.css');
+    else if (localStorage.getItem('theme') == 'dark') colorCss.setAttribute('href', 'darkTheme.css');
+  }
+  else {document.getElementById('themeButtonSpan').innerHTML += 'no localstorage support';}
 }
-setThemeOnLoad(); // Run when the page loads
+
+window.addEventListener("load", setThemeOnLoad, false); // Run when the page loads

@@ -4,7 +4,7 @@ android {
     compileSdkVersion 30
     defaultConfig {
         applicationId "com.paulkoepke.tipcalculator"
-        minSdkVersion 15
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 114
         versionName "1.1.4"
@@ -24,6 +24,6 @@ dependencies {
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
     testImplementation 'junit:junit:4.12'
 }

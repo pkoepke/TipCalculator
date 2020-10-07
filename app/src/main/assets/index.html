@@ -12,9 +12,9 @@
   <meta name="keywords" content="Tip,Calculator">
   <meta name="author" content="Paul Koepke">
   <title>Tip Calculator - by Paul Koepke</title>
-  <link id="css" rel="stylesheet" type="text/css" href="styles_unminified.css">
-  <link id="colorCss" rel="stylesheet" type="text/css" href="lightTheme.css">
-  <script type="text/javascript" src="script_unminified.js"></script>
+  <link id="css" rel="stylesheet" type="text/css" href="styles.css">
+  <link id="colorCss" rel="stylesheet" type="text/css" href="darkTheme.css">
+  <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body>
@@ -38,7 +38,7 @@
       <p id="output"></p> <!-- Initial value will be set by displayOriginalOutput() when the page loads.-->
       <!--<p id="testOutput"></p>-->
     </div>
-	<p><input type="button" value="Dark/light theme" onclick="switchCss(event) "></input></p>
+	<p><span id="themeButtonSpan"></span></p>
   </main>
 </body>
 
