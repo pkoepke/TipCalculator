@@ -6,8 +6,8 @@ android {
         applicationId "com.paulkoepke.tipcalculator"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 114
-        versionName "1.1.4"
+        versionCode 116
+        versionName "1.1.6"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
